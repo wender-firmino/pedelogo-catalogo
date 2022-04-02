@@ -1,7 +1,7 @@
 pipeline {
     
     environment {
-        registry = "wfirmino@gmail.com/api-produto"
+        registry = 'wfirmino@gmail.com/api-produto'
         registryCredential = 'dockerhub_id'
         dockerImage = ''
     }
