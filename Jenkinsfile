@@ -1,14 +1,13 @@
-pipeline
-{
-  stagesa
-  {
-    stage("teste de build")
-    {
-      steps
-      {
-        sh 'echo "ok"'
-      }
+
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Get Source') {
+            steps {
+                git url: 'https://github.com/wender-firmino/pedelogo-catalogo.git', branch: 'main'
+            }
+        }
     }
-  }
-  
 }
