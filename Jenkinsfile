@@ -9,23 +9,25 @@ pipeline {
                 git url: 'https://github.com/wender-firmino/pedelogo-catalogo.git', branch: 'dev1'
             }
         }
-        stage('Docker Build Image') {
-            steps {
+       
+        stage('Building our image') {
+            steps{
                 script {
-                    dockerapp = docker.build("wender-firmino/api-produto:${env.BUILD_ID}",
-                      '-f ./src/PedeLogo.Catalogo.Api/Dockerfile .')
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
-         stage('Docker Push Image') {
-            steps {
-                script {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                        dockerapp.push('latest')
-                        dockerapp.push("${env.BUILD_ID}")
+        stage('Deploy our image') {
+            steps{
+                script 
+                {
+                    docker.withRegistry( '', registryCredential ) 
+                    {
+                        dockerImage.push()
                     }
                 }
             }
         }
+        
     }
 }
