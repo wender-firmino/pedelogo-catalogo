@@ -13,7 +13,7 @@ spec:
     spec:            
       containers:
       - name: api
-        image: fabricioveronez/api-produto:{{tag}}
+        image: wender-firmino/api-produto:{{tag}}
         ports:
         - containerPort: 80
         imagePullPolicy: Always
