@@ -6,7 +6,7 @@ pipeline {
 
         stage('Get Source') {
             steps {
-                git url: 'https://github.com/wender-firmino/pedelogo-catalogo.git', branch: 'main'
+                git url: 'https://github.com/wender-firmino/pedelogo-catalogo.git', branch: 'dev1'
             }
         }
     }
